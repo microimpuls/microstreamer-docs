@@ -1,0 +1,588 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Описание &mdash; Документация microstreamer Last</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Документация microstreamer Last" href="index.html"/>
+        <link rel="prev" title="microstreamer - документация для ПО в составе решения Microimpuls Video Streamer" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> microstreamer
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                Last
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Описание</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#system-requirements">Системные требования</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#install-and-using">Установка и использование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#download-software">Где взять</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Конфигурация</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-options-description">Описание параметров</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#streams">Описание параметров потоков в списке streams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uri">Формат адреса uri</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#auth-logic-description">Логика работы механизма авторизации потоков</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Схема работы авторизации</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#license-setup">Настройка лицензии</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#monit">Скрипт для monit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multiinstance-configuration">Установка нескольких инстансов microstreamer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#id13">Решение проблем и рекомендации</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id14">Рекомендуемые параметры ядра</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">Дополнительные настройки ОС при очень большом количестве одновременных подключений</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">microstreamer</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Описание</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/microstreamer.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="microstreamer">
+<span id="id1"></span><h1>Описание<a class="headerlink" href="#microstreamer" title="Ссылка на этот заголовок">¶</a></h1>
+<p><strong>microstreamer</strong> - программное обеспечение сервера <em>Microimpuls OTT Streamer</em>,
+предназначенное для Unicast-видеостриминга в формате HTTP MPEG-TS chunked streaming.
+В качестве входного потока по-умолчанию используется UDP Multicast, однако может быть настроен любой формат потока,
+который поддерживает библиотека <em>libmedia</em> (см. <a class="reference internal" href="#uri-format"><span>Формат URI</span></a>).</p>
+</div>
+<div class="section" id="system-requirements">
+<span id="id2"></span><h1>Системные требования<a class="headerlink" href="#system-requirements" title="Ссылка на этот заголовок">¶</a></h1>
+<p>microstreamer предназначен для работы в ОС Linux Debian 64-битной версии и подобных
+дистрибутивах, по-умолчанию поставляется версия для архитектуры amd64.</p>
+<p><em>Внимание! ПО microstreamer не предназначено для работы на виртуальной машине по причине негарантированной стабильности
+работы виртуального сетевого адаптера.</em></p>
+<p>Требования к аппаратному обеспечению, исходя из принимаемого/передающегося объема трафика:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Процессор</td>
+<td>1 ядро 2.4Ghz+ на каждые 400Mbps трафика</td>
+</tr>
+<tr class="row-even"><td>Оперативная память</td>
+<td>1GB на каждые 400Mbps трафика</td>
+</tr>
+<tr class="row-odd"><td>Сетевая карта</td>
+<td>карта с Enterprise чипом Intel, имеющая несколько очередей для входящих пакетов (multiple Rx queues)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="install-and-using">
+<span id="id3"></span><h1>Установка и использование<a class="headerlink" href="#install-and-using" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Для работы microstreamer необходимо наличие библиотек <em>libmedia</em>, <em>libjsonrpc</em>, <em>libjson</em>, <em>libhttp</em>.</p>
+<p><em>libmedia</em> - библиотека для работы с UDP/TCP сокетами, разрабатывается вместе с microporter, microstreamer и другими продуктами.</p>
+<p><em>libhttp</em> - библиотека реализации HTTP MPEG-TS сервера вещания, разрабатывается вместе с microstreamer.</p>
+<p>microstreamer, а также все необходимые библиотеки совместимых версий, поставляются в виде
+установочных deb-пакетов и устанавливаются утилитой dpkg. См. <a class="reference internal" href="#download-software"><span>Где взять</span></a>.</p>
+<p>Для запуска используется init.d скрипт: <code class="docutils literal"><span class="pre">/etc/init.d/microstreamer</span></code>, доступные аргументы:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ /etc/init.d/microstreamer
+Usage: /etc/init.d/microstreamer {start|stop|restart|force-reload|reload}
+</pre></div>
+</div>
+<p>Файлы логов по-умолчанию сохраняются в <code class="docutils literal"><span class="pre">/var/log/microstreamer/microstreamer.log</span></code>,
+включена ротация логов через logrotate.d</p>
+<div class="section" id="download-software">
+<span id="id4"></span><h2>Где взять<a class="headerlink" href="#download-software" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="docutils">
+<dt>Для всех</dt>
+<dd>Скачать необходимые инсталляционные пакеты можно в официальном техническом сообществе Microimpuls
+по ссылке <a class="reference external" href="http://forum.micro.im/">http://forum.micro.im/</a> в разделе &#8220;Дистрибутивы и обновления ПО&#8221;.</dd>
+<dt>Для инженеров Microimpuls</dt>
+<dd>При установке ПО на сервер через систему оркестровки все необходимые установочные пакеты
+актуальных версий скачиваются из репозитория автоматически.</dd>
+</dl>
+</div>
+<div class="section" id="configuration">
+<span id="id5"></span><h2>Конфигурация<a class="headerlink" href="#configuration" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Файл конфигурации находится в <code class="docutils literal"><span class="pre">/etc/microstreamer/microstreamer.conf</span></code>,
+задаётся в формате JSON. Пример:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>{
+    &quot;log-syslog&quot;: false,
+    &quot;log-facility&quot;: 0,
+    &quot;log-path&quot;: &quot;/var/log/microstreamer/microstreamer.log&quot;,
+    &quot;log-verbose-level&quot;: 3,
+    &quot;log-foreground&quot;: false,
+    &quot;json-rpc-enabled&quot;: true,
+    &quot;json-rpc-listen-host&quot;: &quot;0.0.0.0&quot;,
+    &quot;json-rpc-listen-port&quot;: 9089,
+    &quot;streaming-enabled&quot;: true,
+    &quot;http-port&quot;: 8080,
+    &quot;priority&quot;: 0,
+    &quot;latency-events&quot;: 50,
+    &quot;disconnect-slow-clients&quot;: false,
+    &quot;drain-buffer-slow-clients&quot;: true,
+    &quot;max-client-buffer&quot;: 48000000,
+    &quot;auth-enabled&quot;: false,
+    &quot;auth-salt&quot;: &quot;testsalt&quot;,
+    &quot;secret&quot;: &quot;6bc3fb2292542160552ac8f142c1c93c&quot;,
+    &quot;http-max-ts&quot;: 20000,
+    &quot;http11-enabled&quot;: false,
+    &quot;clear-old-keys&quot;: true,
+    &quot;paired-users-ip-block&quot;: false,
+    &quot;stream-alive-timeout&quot;: 5,
+    &quot;license-owner&quot;: &quot;Demo&quot;,
+    &quot;license-streams-limit&quot;: 20,
+    &quot;license-code&quot;: &quot;1452c-527c0-8cbfe-74f10-15f5a&quot;,
+    &quot;streams&quot;: [
+        {
+            &quot;name&quot;: &quot;Dummy channel&quot;,
+            &quot;enabled&quot;: true,
+            &quot;src&quot;: &quot;239.152.2.1 1234 multicast udp&quot;,
+            &quot;url&quot;: &quot;/dummy/&quot;,
+            &quot;payload-size&quot;: 1316, // b
+            &quot;ttl&quot;: 32
+        }
+    ]
+}
+</pre></div>
+</div>
+<div class="section" id="general-options-description">
+<span id="id6"></span><h3>Описание параметров<a class="headerlink" href="#general-options-description" title="Ссылка на этот заголовок">¶</a></h3>
+<dl class="docutils">
+<dt>log-syslog <code class="docutils literal"><span class="pre">bool</span></code></dt>
+<dd>Использовать ли службу syslogd для записи логов в /var/log/syslog.
+Не рекомендуется включать при интенсивном логировании.</dd>
+<dt>log-facility <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Тег в syslog.</dd>
+<dt>log-path <code class="docutils literal"><span class="pre">str</span></code></dt>
+<dd>Путь до лог-файла для логирования напрямую без syslogd.</dd>
+<dt>log-verbose-level <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Уровень логирования от 0 до 9, 9 - максимальный DEBUG уровень.</dd>
+<dt>log-foreground <code class="docutils literal"><span class="pre">bool</span></code></dt>
+<dd>Вывод лога в stdout.</dd>
+<dt>json-rpc-enabled <code class="docutils literal"><span class="pre">bool</span></code></dt>
+<dd>Включает интерфейс JSON RPC API. Через этот API без перезапуска microstreamer
+отдельные потоки могут быть приостановлены или перезапущены.</dd>
+<dt>json-rpc-listen-host <code class="docutils literal"><span class="pre">str</span></code></dt>
+<dd>Адрес интерфейса для ожидания входящих подключений к JSON RPC API.
+Значение &#8220;0.0.0.0&#8221; означает слушать на всех интерфейсах.</dd>
+<dt>json-rpc-listen-port <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Номер порта TCP для JSON RPC API, по-умолчанию 9089.</dd>
+<dt>streaming-enabled <code class="docutils literal"><span class="pre">bool</span></code></dt>
+<dd>Глобальный флаг, если true - видеостриминг включен, false - выключен.</dd>
+<dt>http-port <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Порт, на котором http-сервер будет ожидать входящие подключения.</dd>
+<dt>priority <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Приоритет процесса в ОС, 0 - автоматический приоритет по выбору ОС.
+Не рекомендуется использовать высокий приоритет при большом количестве анализируемых потоков.</dd>
+<dt>latency-events <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Задержка обработки событий сокета, задается в миллисекундах. Чем меньше значение, тем меньше будет
+задержка показа видео при первом подключении и тем быстрее будут обрабатываться входящие соединение.
+Чем больше значение, тем выше нагрузка на CPU.</dd>
+<dt>disconnect-slow-clients <code class="docutils literal"><span class="pre">bool</span></code></dt>
+<dd>При включении этой опции клиенты с медленным интернет-соединением будут отключены от видеопотока при
+достижении очереди неотправленных пакетов значения <em>&#8220;max-client-buffer&#8221;</em>.</dd>
+<dt>drain-buffer-slow-clients <code class="docutils literal"><span class="pre">bool</span></code></dt>
+<dd>При включении этой опции поведение, заданное <em>&#8220;disconnect-slow-clients&#8221;</em>, игнорируется, а вместо
+отключения очередь пакетов для клиента будет опустошена со сдвигом видеопозиции на текущий момент
+времени. Таким образом, у клиента с медленным интернет-соединением будут происходить плавные
+переходы во времени для поддержания актуальности стриминга.</dd>
+<dt>max-client-buffer <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Максимальный размер очереди неотправленных пакетов клиенту в байтах. По достижению максимума
+очередь опустошается и происходит одно из действий, описываемых опциями выше.</dd>
+<dt>auth-enabled <code class="docutils literal"><span class="pre">bool</span></code></dt>
+<dd>Включает встроенный механизм авторизации потоков по одноразовым токенам.
+См. <a class="reference internal" href="#auth-logic-description"><span>Логика работы механизма авторизации потоков</span></a>.</dd>
+<dt>auth-salt <code class="docutils literal"><span class="pre">str</span></code></dt>
+<dd>Дополнительная &#8220;соль&#8221; для защиты ключа авторизации при хешировании.</dd>
+<dt>secret <code class="docutils literal"><span class="pre">str</span></code></dt>
+<dd>Секретный ключ оператора, который может быть передан в HTTP запросе в аргументе <code class="docutils literal"><span class="pre">?s=</span></code> для обхода
+авторизации.</dd>
+<dt>http-max-ts <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Максимальное число байтов в порции данных, отправляемых клиенту сервером за один http-ответ при
+использовании chunked streaming (требуется включить так же поддержку HTTP 1.1).</dd>
+<dt>http11-enabled <code class="docutils literal"><span class="pre">bool</span></code></dt>
+<dd>Включить поддержку HTTP 1.1 и chunked streaming.</dd>
+<dt>clear-old-keys <code class="docutils literal"><span class="pre">bool</span></code></dt>
+<dd>Включает регулярный таймер проверки и очистки старых ключей и сессий, необходим для дополнительного
+контроля за освобождением выделенных ресурсов.</dd>
+<dt>paired-users-ip-block <code class="docutils literal"><span class="pre">bool</span></code></dt>
+<dd>Включает блокировку подключения к потокам с разных IP-адресов аккаунтами одного абонента. Данные аккаунта
+передаются через JSON API при размещении ключа авторизации. Используется только при включенной опции
+<em>&#8220;auth-enabled&#8221;</em>.</dd>
+<dt>stream-alive-timeout <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Время в миллисекундах, после которого считается, что на входящем видеопотоке нет данных и требуется
+разорвать соединение с клиентом. При нестабильных видеопотоках увеличением этого значения можно
+стабилизировать услугу видеостриминга.</dd>
+<dt>license-owner <code class="docutils literal"><span class="pre">str</span></code></dt>
+<dd>Имя лицензии.
+см. <a class="reference internal" href="#license-setup"><span>Настройка лицензии</span></a></dd>
+<dt>license-streams-limit <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Количество потоков, разрешенное лицензией.</dd>
+<dt>license-code <code class="docutils literal"><span class="pre">str</span></code></dt>
+<dd>Лицензионный ключ.</dd>
+<dt>streams <code class="docutils literal"><span class="pre">list</span></code></dt>
+<dd>Список потоков для видеостриминга.</dd>
+</dl>
+</div>
+<div class="section" id="streams">
+<span id="stream-options-description"></span><h3>Описание параметров потоков в списке streams<a class="headerlink" href="#streams" title="Ссылка на этот заголовок">¶</a></h3>
+<dl class="docutils">
+<dt>name <code class="docutils literal"><span class="pre">str</span></code></dt>
+<dd>Имя потока.</dd>
+<dt>enabled <code class="docutils literal"><span class="pre">bool</span></code></dt>
+<dd>Флаг активности стриминга потока.</dd>
+<dt>src <code class="docutils literal"><span class="pre">uri</span></code></dt>
+<dd>Адрес, на котором ожидается прием потока.</dd>
+<dt>url <code class="docutils literal"><span class="pre">str</span></code></dt>
+<dd>Имя URL, по которой будет доступен поток.</dd>
+<dt>payload-size <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Размер полезных данных в байтах в одном сетевом пакете.
+По-умолчанию, значение 1316, соответствует максимальному размеру пакета, который помещается в стандартный MTU 1500.
+Значение 1316 (7 TS-фреймов по 188 байт) подходит для большинства случаев.</dd>
+<dt>ttl <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Время жизни пакета.</dd>
+</dl>
+</div>
+<div class="section" id="uri">
+<span id="uri-format"></span><h3>Формат адреса uri<a class="headerlink" href="#uri" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Адрес потока задается в формате:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;ip&gt; &lt;port&gt; &lt;cast_type&gt; &lt;protocol&gt;
+</pre></div>
+</div>
+<p>Доступные <em>cast_type</em>: <code class="docutils literal"><span class="pre">multicast</span></code>, <code class="docutils literal"><span class="pre">unicast</span></code>, <code class="docutils literal"><span class="pre">file</span></code>.
+Доступные <em>protocol</em>: <code class="docutils literal"><span class="pre">udp</span></code>, <code class="docutils literal"><span class="pre">tcp</span></code>, <code class="docutils literal"><span class="pre">ts</span></code>.</p>
+<p>При использовании типа <code class="docutils literal"><span class="pre">file</span></code>, в качестве <em>ip</em> задаётся путь к директории,
+а в качестве <em>port</em> имя файла.</p>
+<p>В режиме <code class="docutils literal"><span class="pre">unicast</span> <span class="pre">tcp</span></code> microstreamer будет готов обработать входящее подключение от <a class="reference external" href="http://mi-microporter-docs.readthedocs.io/en/latest/index.html">microporter</a>.</p>
+<p>Примеры:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s2">&quot;239.0.0.1 1234 multicast udp&quot;</span>
+<span class="s2">&quot;0.0.0.0 2001 unicast tcp&quot;</span>
+<span class="s2">&quot;/home/storage filename.ts file ts&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="auth-logic-description">
+<span id="id7"></span><h3>Логика работы механизма авторизации потоков<a class="headerlink" href="#auth-logic-description" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="section" id="id8">
+<h4>Схема работы авторизации<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h4>
+<img alt="_images/microstreamer-auth-scheme.jpg" src="_images/microstreamer-auth-scheme.jpg" />
+<div class="section" id="id9">
+<h5>Создание и отправка токена<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h5>
+<p>В момент получения запроса от клиента на URL видеопотока сервером Middleware генерируется одноразовый токен
+на основании секретной строки (соли) и IP-адреса клиента, после чего через JSON-RPC API интерфейс отправляется в microstreamer.</p>
+<p>Алгоритм генерации токена выбирается на усмотрение сервера Middleware, это может быть любая случайно сгенерированная
+последовательность символов.</p>
+<p>RPC-метод в microstreamer для добавления ключа - <code class="docutils literal"><span class="pre">add_connection_key</span></code>. Он принимает следующие параметры:</p>
+<dl class="docutils">
+<dt>uid <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Идентификатор абонента (лицевого счета) в системе Middleware.</dd>
+<dt>aid <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Идентификатор аккаунта (услуги) в системе Middleware. Используется для мониторинга и работы механизма
+блокировки одновременного доступа с разных IP-адресов разных аккаунтов абонента.</dd>
+<dt>user_info <code class="docutils literal"><span class="pre">str</span></code></dt>
+<dd>Информация об абоненте в свободной форме. Используется для последующего мониторинга онлайн-подключений.</dd>
+<dt>ip <code class="docutils literal"><span class="pre">str</span></code></dt>
+<dd>IP-адрес клиента, к которому привязывается токен и с которого будет произведено подключение к http-стримеру.</dd>
+<dt>pass <code class="docutils literal"><span class="pre">str</span></code></dt>
+<dd>Токен.</dd>
+<dt>duration <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Время жизни токена в секундах.</dd>
+</dl>
+<p>Ответ выполнения операции метод возвращает в поле <code class="docutils literal"><span class="pre">result</span></code>. В случае успеха в этом поле будет внутренний
+идентификатор токена в microstreamer (числовое значение), в случае ошибки - описание ошибки (строка).</p>
+</div>
+<div class="section" id="url">
+<h5>Добавление токена и других параметров к URL видеопотока для плеера<a class="headerlink" href="#url" title="Ссылка на этот заголовок">¶</a></h5>
+<p>Для валидации токена и клиента на microstreamer сервер Middleware должен модифицировать URL видеопотока,
+добавив к нему следующие параметры:</p>
+<dl class="docutils">
+<dt>p <code class="docutils literal"><span class="pre">str</span></code></dt>
+<dd>Токен.</dd>
+<dt>key <code class="docutils literal"><span class="pre">str</span></code></dt>
+<dd>Ключ валидации токена.</dd>
+<dt>u <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Идентификатор абонента (поле uid).</dd>
+<dt>a <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>Идентификатор аккаунта (поле aid).</dd>
+</dl>
+<p>Алгоритм генерации ключа валидации <code class="docutils literal"><span class="pre">key</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">KEY</span> <span class="o">=</span> <span class="n">MD5</span><span class="p">(</span><span class="n">SALT</span> <span class="o">+</span> <span class="n">IP</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>где <code class="docutils literal"><span class="pre">SALT</span></code> должно совпадать со значением опции <code class="docutils literal"><span class="pre">auth-salt</span></code> в файле конфигурации microstreamer,
+а <code class="docutils literal"><span class="pre">IP</span></code> это IP-адрес клиента, с которого он будет подключаться к microstreamer, обращаясь за видеопотоком.</p>
+</div>
+<div class="section" id="id10">
+<h5>Пример кода<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h5>
+<p>microstreamer.conf:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>...
+&quot;auth-enabled&quot;: true,
+&quot;auth-salt&quot;: &quot;foobar&quot;,
+...
+</pre></div>
+</div>
+<p>/some-tv-middleware/get_url.php:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>...
+$token = uniqid(&quot;&quot;, true);
+$key = md5(&quot;foobar&quot;.$_SERVER[&#39;REMOTE_ADDR&#39;]);
+
+$rpc = new jsonRPCClient(&quot;1.2.3.4&quot;, 9089, false);
+$rpc-&gt;add_connection_key(array(
+    &#39;uid&#39; =&gt; 1, &#39;aid&#39; =&gt; 2,
+    &#39;user_info&#39; =&gt; &quot;User 1, Account 2&quot;,
+    &#39;ip&#39; =&gt; $_SERVER[&#39;REMOTE_ADDR&#39;],
+    &#39;pass&#39; =&gt; $token,
+    &#39;duration&#39; =&gt; 30
+));
+
+$url = &quot;http://1.2.3.4:8080/streamurl/?p=$token&amp;key=$key&amp;u=1&amp;a=2&quot;;
+...
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="license-setup">
+<span id="id11"></span><h3>Настройка лицензии<a class="headerlink" href="#license-setup" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Лицензионный ключ генерируется на основании уникального идентификатора сервера и
+привязывается к его аппаратной и программной конфигурации, а также к значениям параметров
+<code class="docutils literal"><span class="pre">license-owner</span></code> и <code class="docutils literal"><span class="pre">license-streams-limit</span></code>.</p>
+<p>При запуске microstreamer без лицензионного ключа в лог-файл будет выведен специальный
+многострочный медиа-код, на основании которого генерируется лицензионный.</p>
+<p>Для получения ключа необходимо обратиться к своему менеджеру или отправить письмо на адрес <a class="reference external" href="mailto:request&#37;&#52;&#48;microimpuls&#46;com">request<span>&#64;</span>microimpuls<span>&#46;</span>com</a>.
+Запрос должен содержать медиа-код и информацию об имеющемся договоре.</p>
+</div>
+</div>
+<div class="section" id="monit">
+<span id="monit-script"></span><h2>Скрипт для monit<a class="headerlink" href="#monit" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для слежения за процессами microstreamer удобно использовать monit, пример скрипта:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>check process microstreamer with pidfile /var/run/microstreamer.pid
+    start program = &quot;/etc/init.d/microstreamer start&quot; with timeout 60 seconds
+    stop program  = &quot;/etc/init.d/microstreamer stop&quot;
+    if cpu &gt; 60% for 2 cycles then alert
+    if cpu &gt; 90% for 5 cycles then restart
+    if totalmem &gt; 6000.0 MB for 5 cycles then restart
+    if 3 restarts within 5 cycles then timeout
+    group microstreamer
+</pre></div>
+</div>
+</div>
+<div class="section" id="multiinstance-configuration">
+<span id="id12"></span><h2>Установка нескольких инстансов microstreamer<a class="headerlink" href="#multiinstance-configuration" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Установка и работа нескольких копий процесса microstreamer на одном сервере допускается.
+Для удобства администрирования такого сервера рекомендуется разные конфигурации сохранять
+в отдельных конфигурационных файлах, при этом именуя конфиг-файл с суффиксом в конце,
+а также создавать отдельный monit-конфиг и init-скрипт для каждого инстанса.</p>
+<p>Пример:</p>
+<p><code class="docutils literal"><span class="pre">/etc/microstreamer/microstreamer.foo.conf</span></code> <code class="docutils literal"><span class="pre">/etc/init.d/microstreamer.foo</span></code>
+<code class="docutils literal"><span class="pre">/etc/microstreamer/microstreamer.bar.conf</span></code> <code class="docutils literal"><span class="pre">/etc/init.d/microstreamer.bar</span></code></p>
+<p>Внутри init-скрипта суффикс можно прописать в переменной <code class="docutils literal"><span class="pre">SUFFIX</span></code>, при этом прописывается сам суффикс,
+для примера выше это <code class="docutils literal"><span class="pre">.foo</span></code>, <code class="docutils literal"><span class="pre">.bar</span></code>.</p>
+</div>
+</div>
+<div class="section" id="id13">
+<h1>Решение проблем и рекомендации<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id14">
+<h2>Рекомендуемые параметры ядра<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Изменения нужно вносить в файл /etc/sysctl.conf:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">kernel</span><span class="o">.</span><span class="n">shmmax</span> <span class="o">=</span> <span class="mi">2473822720</span>
+<span class="n">kernel</span><span class="o">.</span><span class="n">shmall</span> <span class="o">=</span> <span class="mi">4097152000</span>
+<span class="n">net</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">rmem_default</span> <span class="o">=</span> <span class="mi">262144</span>
+<span class="n">net</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">rmem_max</span> <span class="o">=</span> <span class="mi">8388608</span>
+<span class="n">net</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">wmem_default</span> <span class="o">=</span> <span class="mi">262144</span>
+<span class="n">net</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">wmem_max</span> <span class="o">=</span> <span class="mi">8388608</span>
+<span class="n">net</span><span class="o">.</span><span class="n">ipv4</span><span class="o">.</span><span class="n">tcp_syncookies</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">net</span><span class="o">.</span><span class="n">ipv4</span><span class="o">.</span><span class="n">tcp_tw_recycle</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">net</span><span class="o">.</span><span class="n">ipv4</span><span class="o">.</span><span class="n">tcp_tw_reuse</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">net</span><span class="o">.</span><span class="n">ipv4</span><span class="o">.</span><span class="n">tcp_keepalive_time</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">net</span><span class="o">.</span><span class="n">ipv4</span><span class="o">.</span><span class="n">tcp_fin_timeout</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>Затем выполнить команду для применения изменений:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sysctl</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>Дополнительные настройки ОС при очень большом количестве одновременных подключений<a class="headerlink" href="#id15" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В файле <code class="docutils literal"><span class="pre">/etc/security/limits.conf</span></code> необходимо прописать:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>*               soft    nofile          16384
+*               hard    nofile          16384
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="microstreamer - документация для ПО в составе решения Microimpuls Video Streamer" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Konstantin Shpinev.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'Last',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

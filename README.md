@@ -1,2 +1,2 @@
 # microstreamer-docs
- Microimpuls Video Streamer software documentation 
+ Microimpuls OTT Streamer software documentation 

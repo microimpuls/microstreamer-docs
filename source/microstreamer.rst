@@ -4,7 +4,7 @@
 Описание
 ********
 
-**microstreamer** - программное обеспечение сервера *Microimpuls OTT Streamer*,
+**microstreamer** - программное обеспечение сервера *Microimpuls Streamer*,
 предназначенное для Unicast-видеостриминга в формате HTTP MPEG-TS chunked streaming.
 В качестве входного потока по-умолчанию используется UDP Multicast, однако может быть настроен любой формат потока,
 который поддерживает библиотека *libmedia* (см. :ref:`Формат URI <uri-format>`).

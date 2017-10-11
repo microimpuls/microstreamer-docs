@@ -252,13 +252,15 @@ ttl ``int``
 
 Адрес входного потока задается в формате:
 ::
-    <ip> <port> <cast_type> <protocol>
+    <ip> <port> <cast_type> <protocol> [<path>]
 
 Доступные *cast_type*: ``multicast``, ``unicast``, ``file``.
 Доступные *protocol*: ``udp``, ``tcp``, ``ts``.
 
 При использовании типа ``file``, в качестве *ip* задаётся путь к директории,
 а в качестве *port* имя файла.
+
+Парметр ``path`` испольуется только при *cast_type* ``http`` и определяет путь до потока на сервере.
 
 В режиме ``unicast tcp`` microstreamer будет готов обработать входящее подключение от `microporter <http://mi-microporter-docs.readthedocs.io/en/latest/index.html>`_.
 
@@ -267,6 +269,7 @@ ttl ``int``
     "239.0.0.1 1234 multicast udp"
     "0.0.0.0 2001 unicast tcp"
     "/home/storage filename.ts file ts"
+    "10.0.34.23 8081 http tcp /ch1/"
 
 .. _auth-logic-description:
 
